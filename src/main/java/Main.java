@@ -1,6 +1,6 @@
 public class Main {
+
     public static void main(String[] args) {
-        System.out.print("Hash Table");
 
         HashTable<String, String> hashTable = new HashTable();
 
@@ -10,6 +10,8 @@ public class Main {
 
         hashTable.add("keyTwo", "BlueLagoon");
         hashTable.add("keyTwo", "BlueSmell");
+
+        System.out.println(hashTable.get("keyTwo"));
     }
 }
 

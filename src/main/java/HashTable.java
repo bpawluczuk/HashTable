@@ -74,5 +74,16 @@ public class HashTable<K, V> {
         }
     }
 
+    public V get(K key) {
+        int bucketIndex = this.getBucketIndex(key);
+        Entry<K, V> head = this.bucketArray.get(bucketIndex);
+        while (head != null) {
+            if (head.key.equals(key)) {
+                return head.value;
+            }
+            head = head.next;
+        }
+        return null;
+    }
 
 }
