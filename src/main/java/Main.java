@@ -9,6 +9,7 @@ public class Main {
         hashTable.add("keyThree", "White");
 
         hashTable.add("keyTwo", "BlueLagoon");
+        hashTable.add("keyTwo", "BlueSmell");
     }
 }
 

@@ -6,12 +6,14 @@ public class HashTable<K, V> {
     private static final float FACTOR = 0.75F;
 
     private int size;
+    private int threshold;
 
     private ArrayList<Entry<K, V>> bucketArray;
 
     public HashTable() {
         this.bucketArray = new ArrayList<>();
         this.size = 0;
+        this.threshold = (int) (this.capacity * FACTOR);
         for (int i = 0; i < this.capacity; i++) {
             bucketArray.add(null);
         }
@@ -49,5 +51,28 @@ public class HashTable<K, V> {
         Entry<K, V> newEntry = new Entry<K, V>(key, value);
         newEntry.next = head;
         bucketArray.set(bucketIndex, newEntry);
+
+        if (this.size == this.threshold) {
+            resize();
+        }
     }
+
+    public void resize() {
+        ArrayList<Entry<K, V>> temp = this.bucketArray;
+        this.bucketArray = new ArrayList<>();
+        this.capacity = this.capacity * 2;
+
+        for (int i = 0; i < this.capacity; i++) {
+            this.bucketArray.add(null);
+        }
+
+        for (Entry<K, V> head : temp) {
+            while (head != null) {
+                this.add(head.key, head.value);
+                head = head.next;
+            }
+        }
+    }
+
+
 }
