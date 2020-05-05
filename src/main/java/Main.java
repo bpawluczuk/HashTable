@@ -12,6 +12,11 @@ public class Main {
         hashTable.add("keyTwo", "BlueSmell");
 
         System.out.println(hashTable.get("keyTwo"));
+        hashTable.remove("keyTwo");
+        System.out.println(hashTable.get("keyTwo"));
+
+        hashTable.add("keyTwo", "BlueLagoon");
+        System.out.println(hashTable.get("keyTwo"));
     }
 }
 

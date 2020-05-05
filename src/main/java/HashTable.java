@@ -86,4 +86,29 @@ public class HashTable<K, V> {
         return null;
     }
 
+    public V remove(K key) {
+        int bucketIndex = this.getBucketIndex(key);
+        Entry<K, V> head = this.bucketArray.get(bucketIndex);
+
+        Entry<K, V> prev = null;
+        while (head != null) {
+            if (head.key.equals(key))
+                break;
+
+            prev = head;
+            head = head.next;
+        }
+
+        if (head == null)
+            return null;
+
+        size--;
+
+        if (prev != null) {
+            prev.next = head.next;
+        } else {
+            bucketArray.set(bucketIndex, head.next);
+        }
+        return head.value;
+    }
 }
